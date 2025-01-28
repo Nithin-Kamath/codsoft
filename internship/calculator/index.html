@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .calculator {
+      width: 100%;
+      max-width: 360px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .display {
+      width: 100%;
+      height: 60px;
+      background-color: #282c34;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      text-align: right;
+      font-size: 2rem;
+      padding: 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      transition: all 0.3s;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 20px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.1s ease-in-out;
+      box-sizing: border-box;
+    }
+
+    button:hover {
+      background-color: #45a049;
+      transform: scale(1.1);
+    }
+
+    button.operator {
+      background-color: #f39c12;
+    }
+
+    button.operator:hover {
+      background-color: #e67e22;
+    }
+
+    button.clear {
+      background-color: #e74c3c;
+    }
+
+    button.clear:hover {
+      background-color: #c0392b;
+    }
+
+    @media (max-width: 480px) {
+      .calculator {
+        padding: 15px;
+        width: 95%;
+      }
+
+      button {
+        font-size: 1.2rem;
+        padding: 15px;
+      }
+      
+      .display {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" class="display" id="display" disabled>
+    <div class="buttons">
+      <button onclick="appendNumber('7')">7</button>
+      <button onclick="appendNumber('8')">8</button>
+      <button onclick="appendNumber('9')">9</button>
+      <button class="operator" onclick="chooseOperator('/')">/</button>
+
+      <button onclick="appendNumber('4')">4</button>
+      <button onclick="appendNumber('5')">5</button>
+      <button onclick="appendNumber('6')">6</button>
+      <button class="operator" onclick="chooseOperator('*')">*</button>
+
+      <button onclick="appendNumber('1')">1</button>
+      <button onclick="appendNumber('2')">2</button>
+      <button onclick="appendNumber('3')">3</button>
+      <button class="operator" onclick="chooseOperator('-')">-</button>
+
+      <button onclick="appendNumber('0')">0</button>
+      <button onclick="appendNumber('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button class="operator" onclick="chooseOperator('+')">+</button>
+
+      <button class="clear" onclick="clearDisplay()" colspan="4">C</button>
+    </div>
+  </div>
+
+  <script>
+    let currentInput = '';
+    let previousInput = '';
+    let operator = null;
+
+    function appendNumber(number) {
+      currentInput += number;
+      updateDisplay();
+    }
+
+    function chooseOperator(op) {
+      if (currentInput === '') return;
+      if (previousInput !== '') {
+        calculate();
+      }
+      operator = op;
+      previousInput = currentInput;
+      currentInput = '';
+    }
+
+    function calculate() {
+      let result;
+      const prev = parseFloat(previousInput);
+      const curr = parseFloat(currentInput);
+
+      if (isNaN(prev) || isNaN(curr)) return;
+
+      switch (operator) {
+        case '+':
+          result = prev + curr;
+          break;
+        case '-':
+          result = prev - curr;
+          break;
+        case '*':
+          result = prev * curr;
+          break;
+        case '/':
+          result = prev / curr;
+          break;
+        default:
+          return;
+      }
+
+      currentInput = result;
+      operator = null;
+      previousInput = '';
+      updateDisplay();
+    }
+
+    function clearDisplay() {
+      currentInput = '';
+      previousInput = '';
+      operator = null;
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById('display');
+      display.value = currentInput;
+    }
+  </script>
+</body>
+</html>

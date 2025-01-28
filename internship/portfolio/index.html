@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fa;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #111;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    header .logo {
+      color: #fff;
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    header nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    header nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #00adb5;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      border-radius: 5px;
+    }
+
+    @media (max-width: 768px) {
+      header nav {
+        display: none;
+        flex-direction: column;
+        background: #111;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        width: 200px;
+        border-radius: 8px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      header nav.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    #about {
+      background: #f1f1f1;
+    }
+
+    #about img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    #about img:hover {
+      transform: scale(1.1);
+    }
+
+    #skills {
+      background: #00adb5;
+      color: #fff;
+    }
+
+    #skills ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    #skills ul li {
+      background: #222;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    #skills ul li:hover {
+      background: #444;
+    }
+
+    #projects {
+      background: #393e46;
+      color: #fff;
+    }
+
+    #projects .project {
+      margin-bottom: 30px;
+    }
+
+    #projects h3 {
+      margin-bottom: 10px;
+    }
+
+    #projects img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 4px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #projects img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    #resume {
+      background: #eeeeee;
+      color: #333;
+    }
+
+    #resume a {
+      display: inline-block;
+      margin-top: 20px;
+      background: #00adb5;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    #resume a:hover {
+      background: #007f8c;
+    }
+
+    #contact {
+      background: #222;
+      color: #fff;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">My Portfolio</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <section id="about">
+    <img src="photo.jpg" alt="Your Photo">
+    <h2>About Me</h2>
+    <p style="text-align: center;">Hi, I'm Nithin Kamath, a passionate web developer with expertise in HTML, CSS, JavaScript,PHP and SQL. I have experience building dynamic and responsive websites, including a Library Management System for college use and professional portfolio websites. My skills extend to back-end technologies like PHP, enabling me to develop full-stack applications. I'm constantly learning and excited to create impactful digital solutions!</p>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>PHP</li>
+      <li>SQL</li>
+      <li>Python</li>
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>Library Management System</h3>
+      <img src="project-image.jpg" alt="Library Management System">
+      <p>A comprehensive library management system for college use.</p>
+    </div>
+    <div class="project">
+      <h3>Portfolio Website</h3>
+      <img src="project-image.jpg" alt="Portfolio Website">
+      <p>A sleek portfolio website for a lawyer.</p>
+    </div>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <p>Want to know more about my experience and skills? Download my resume below:</p>
+    <a href="resume.pdf" download>Download Resume</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <p>Email: nithinkamath2002@gmail.com</p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/nithin-kamath-a17a131ab" target="_blank">Visit Profile</a></p>
+  </section>
+
+  <footer>
+    &copy; 2025 Nithin Kamath. All rights reserved.
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const nav = document.querySelector('header nav');
+      nav.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

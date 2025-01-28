@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Agency</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(120deg, #f6d365, #fda085);
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .navbar a:hover {
+            color: #fda085;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 30px;
+            height: 3px;
+            background: #333;
+            margin: 5px 0;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 2rem;
+            background: #fff;
+            border-radius: 15px;
+            margin: 2rem auto;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin: 1rem 0 2rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            color: #fff;
+            background: #fda085;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #f6d365;
+        }
+
+        .image-container {
+            margin: 1.5rem 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .section {
+            margin: 2rem auto;
+            text-align: left;
+            max-width: 900px;
+            background: #fff;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .section p {
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 1rem;
+            color: #888;
+            background: #fff;
+            margin-top: 3rem;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        footer a {
+            color: #fda085;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .navbar-menu {
+                display: none;
+                flex-direction: column;
+                gap: 0;
+                background: #fff;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .navbar-menu a {
+                padding: 1rem 2rem; 
+                border-bottom: 1px solid #f0f0f0; 
+                font-size: 1.2rem;
+            }
+
+            .navbar-menu.active {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .section p {
+                font-size: 1rem;
+            }
+
+            footer {
+                font-size: 0.9rem;
+            }
+        }
+        /* Styling for the form container */
+#contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for form labels */
+#contact form label {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+/* Styling for form input and textarea fields */
+#contact form input,
+#contact form textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#contact form input:focus,
+#contact form textarea:focus {
+    border-color: #fda085;
+}
+
+/* Styling for the submit button */
+#contact form button {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    color: #fff;
+    background: #fda085;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-start; /* Align button to the left */
+}
+
+#contact form button:hover {
+    background: #f6d365;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    #contact form {
+        padding: 1.5rem;
+        width: 90%;
+    }
+
+    #contact form label {
+        font-size: 1rem;
+    }
+
+    #contact form input,
+    #contact form textarea {
+        font-size: 0.95rem;
+    }
+
+    #contact form button {
+        width: 100%;
+    }
+}
+
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const hamburger = document.querySelector(".hamburger");
+            const navbarMenu = document.querySelector(".navbar-menu");
+
+            hamburger.addEventListener("click", () => {
+                navbarMenu.classList.toggle("active");
+            });
+        });
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div><a href="#">Digital Agency</a></div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="navbar-menu">
+            <a href="#about">About Us</a>
+            <a href="#services">Our Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Welcome to Our Digital Agency</h1>
+        <p>Your journey to awesomeness begins here. Join us to explore amazing opportunities.</p>
+        <div class="image-container">
+            <img src="image.jpeg" alt="Landing Page Image">
+        </div>
+        <a href="#services" class="btn">Get Started</a>
+    </div>
+
+    <div id="about" class="section">
+        <h2>About Us</h2>
+        <p>We are a cutting-edge digital agency dedicated to transforming your ideas into reality. With a passion for innovation and a focus on excellence, we help businesses grow by crafting unique digital solutions tailored to their needs. Our team of experts ensures that your brand stands out in the competitive digital landscape.</p>
+    </div>
+
+    <div id="services" class="section">
+        <h2>Our Services</h2>
+        <p><strong>Web Design & Development:</strong> Create stunning, responsive, and user-friendly websites that capture your brand's essence.</p>
+        <p><strong>Digital Marketing:</strong> Boost your online presence with targeted marketing strategies, SEO, and social media campaigns.</p>
+        <p><strong>Brand Strategy:</strong> Develop a cohesive brand identity that resonates with your audience and builds loyalty.</p>
+        <p><strong>Content Creation:</strong> Engage your customers with high-quality, impactful content for blogs, videos, and more.</p>
+    </div>
+
+    <div id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>If you have any questions or want to get in touch with us, feel free to reach out using the following methods:</p>
+        <ul>
+            <li>Email: info@digitalagency.com</li>
+            <li>Phone: +123 456 7890</li>
+            <li>Address: 123 Digital St, Tech City</li>
+        </ul>
+        <p>Or you can fill out the form below:</p>
+        <form>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required>
+            
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Enter your message" required></textarea>
+            
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    
+    
+    <footer>
+        <p>&copy; 2025 Digital Agency. All rights reserved. <a href="#">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
